@@ -1,18 +1,27 @@
-import { SignInButton, SignIn, SignOutButton, UserButton } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignIn,
+  SignOutButton,
+  UserButton,
+  SignedOut,
+  SignedIn,
+} from "@clerk/nextjs";
+import { checkUser } from "@/lib/CheckUser";
 
-const Header = () => {
+const Header = async () => {
+  const user = await checkUser();
+
   return (
     <nav className="navbar">
       <div className="navbar container">
         <h2> work timer</h2>
         <div>
-          <SignInButton>
-            <button className="btn"> Sign In</button>
-          </SignInButton>
-          <SignOutButton>
-            <button className="btn"> Sign Out</button>
-          </SignOutButton>
-          <UserButton afterSignOutUrl="/" />
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
       </div>
     </nav>
