@@ -21,4 +21,17 @@ model User {
   name String?
   imageUrl String?
 
+  workSessions WorkSession[] // opposite relation field
+}
+
+model WorkSession {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+
+  sessionDate     DateTime       // which day
+  durationMinutes Int            // how long (in minutes)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
