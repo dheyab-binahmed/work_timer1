@@ -79,8 +79,8 @@ export default function DataPage() {
         <label>Hours</label>
         <input
           type="number"
-          min={0.25}
-          step={0.25}
+          min={1}
+          step={1}
           placeholder="e.g., 2 or 1.5"
           value={hours}
           onChange={(e) =>

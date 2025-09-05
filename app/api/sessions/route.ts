@@ -1,4 +1,3 @@
-// app/api/sessions/route.ts
 import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
