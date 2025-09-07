@@ -4,13 +4,14 @@ import {
   SignedOut,
   SignedIn,
 } from "@clerk/nextjs";
+import Link from "next/link";
 
 const Header = async () => {
 
   return (
     <nav className="navbar">
       <div className="navbar container">
-        <h2> work timer</h2>
+        <Link href="/" className="bg-red-300"><h2> work timer</h2></Link>
         <div>
           <SignedOut>
             <SignInButton />

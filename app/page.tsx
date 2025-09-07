@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 const HomePage = () => {
   return (
     <main>
-      <h1> Expense tracker</h1>
+      <h1> Work tracker</h1>
+      <Link href="/data" className="btn ">Enter New Data</Link>
     </main>
   );
 };
