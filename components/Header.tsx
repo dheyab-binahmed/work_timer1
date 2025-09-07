@@ -11,7 +11,7 @@ const Header = async () => {
   return (
     <nav className="navbar">
       <div className="navbar container">
-        <Link href="/" className="bg-red-300"><h2> work timer</h2></Link>
+        <Link href="/"className="no-underline text-blue-600 hover:underline"><h2> work timer</h2></Link>
         <div>
           <SignedOut>
             <SignInButton />

@@ -67,7 +67,7 @@ export default function DataPage() {
     <div className="container">
       <h1 style={{ marginTop: 20 }}>Add Work / Focus Hours</h1>
 
-      <form onSubmit={handleSubmit} style={{ width: "100%", maxWidth: 420 }}>
+      <form onSubmit={handleSubmit} className="max-w-lg flex flex-col gap-2">
         <label>Date</label>
         <input
           type="date"
@@ -79,8 +79,8 @@ export default function DataPage() {
         <label>Hours</label>
         <input
           type="number"
-          min={1}
-          step={1}
+          min={0.1}
+          step={0.1}
           placeholder="e.g., 2 or 1.5"
           value={hours}
           onChange={(e) =>
@@ -108,6 +108,22 @@ export default function DataPage() {
         ))}
         {sessions.length === 0 && <li>No entries yet.</li>}
       </ul>
+      <div>
+        {sessions.length > 0 && (
+            <i>
+            Total time: {
+              (() => {
+              const total = sessions.map(s => s.durationMinutes).reduce((a, b) => a + b, 0);
+              const h = Math.floor(total / 60);
+              const m = total % 60;
+              if (h > 0 && m === 0) return `${h} hour${h > 1 ? "s" : ""}`;
+              if (h > 0) return `${h} hour${h > 1 ? "s" : ""} ${m} min`;
+              return `${m} min`;
+              })()
+            }
+            </i>
+        )}
+      </div>
     </div>
   );
 }
